@@ -179,7 +179,6 @@ CREATE TABLE proposer (
 --
 -- Déchargement des données de la table proposer
 --
-
 INSERT INTO proposer VALUES(1, 1);
 INSERT INTO proposer VALUES(2, 1);
 INSERT INTO proposer VALUES(3, 3);
@@ -259,7 +258,7 @@ INSERT INTO typeCuisine VALUES(11, 'grillade');
 
 -- --------------------------------------------------------
 
--
+--
 -- Structure de la table utilisateur
 --
 
@@ -291,14 +290,14 @@ INSERT INTO utilisateur VALUES(7, 'yann@lechambon.fr', 'sej6dETYl/ea.', 'yann');
 --
 ALTER TABLE aimer
   ADD PRIMARY KEY (idR,idU),
-  ADD KEY aimer_ibfk_2 (idU);
+  ADD KEY aimer_ibfk_9 (idU);
 
 --
 -- Index pour la table critiquer
 --
 ALTER TABLE critiquer
   ADD PRIMARY KEY (idR,idU),
-  ADD KEY critiquer_ibfk_2 (idU);
+  ADD KEY critiquer_ibfk_8 (idU);
 
 --
 -- Index pour la table photo
@@ -313,7 +312,7 @@ ALTER TABLE photo
 ALTER TABLE preferer
   ADD PRIMARY KEY (idTC,idU),
   ADD KEY idTC (idTC),
-  ADD KEY preferer_ibfk_1 (idU);
+  ADD KEY preferer_ibfk_7 (idU);
 
 --
 -- Index pour la table proposer
@@ -340,6 +339,7 @@ ALTER TABLE typeCuisine
 ALTER TABLE utilisateur
   ADD PRIMARY KEY (idU),
   ADD UNIQUE KEY mailU (mailU);
+  
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -359,35 +359,35 @@ ALTER TABLE utilisateur
 -- Contraintes pour la table aimer
 --
 ALTER TABLE aimer
-  ADD CONSTRAINT aimer_ibfk_1 FOREIGN KEY (idR) REFERENCES resto (idR),
-  ADD CONSTRAINT aimer_ibfk_2 FOREIGN KEY (idU) REFERENCES utilisateur (idU);
+  ADD CONSTRAINT aimer_ibfk_5 FOREIGN KEY (idR) REFERENCES resto (idR) ON DELETE CASCADE,
+  ADD CONSTRAINT aimer_ibfk_4 FOREIGN KEY (idU) REFERENCES utilisateur (idU) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table critiquer
 --
 ALTER TABLE critiquer
-  ADD CONSTRAINT critiquer_ibfk_1 FOREIGN KEY (idR) REFERENCES resto (idR),
-  ADD CONSTRAINT critiquer_ibfk_2 FOREIGN KEY (idU) REFERENCES utilisateur (idU);
+  ADD CONSTRAINT critiquer_ibfk_6 FOREIGN KEY (idR) REFERENCES resto (idR)ON DELETE CASCADE,
+  ADD CONSTRAINT critiquer_ibfk_5 FOREIGN KEY (idU) REFERENCES utilisateur (idU) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table photo
 --
 ALTER TABLE photo
-  ADD CONSTRAINT photo_ibfk_1 FOREIGN KEY (idR) REFERENCES resto (idR);
+  ADD CONSTRAINT photo_ibfk_3 FOREIGN KEY (idR) REFERENCES resto (idR)ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table preferer
 --
 ALTER TABLE preferer
-  ADD CONSTRAINT preferer_ibfk_1 FOREIGN KEY (idU) REFERENCES utilisateur (idU),
-  ADD CONSTRAINT preferer_ibfk_2 FOREIGN KEY (idTC) REFERENCES typeCuisine (idTC);
+  ADD CONSTRAINT preferer_ibfk_5 FOREIGN KEY (idU) REFERENCES utilisateur (idU)ON DELETE CASCADE,
+  ADD CONSTRAINT preferer_ibfk_6 FOREIGN KEY (idTC) REFERENCES typeCuisine (idTC)ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table proposer
 --
 ALTER TABLE proposer
-  ADD CONSTRAINT proposer_ibfk_1 FOREIGN KEY (idR) REFERENCES resto (idR),
-  ADD CONSTRAINT proposer_ibfk_2 FOREIGN KEY (idTC) REFERENCES typeCuisine (idTC);
+  ADD CONSTRAINT proposer_ibfk_5 FOREIGN KEY (idR) REFERENCES resto (idR)ON DELETE CASCADE,
+  ADD CONSTRAINT proposer_ibfk_6 FOREIGN KEY (idTC) REFERENCES typeCuisine (idTC)ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

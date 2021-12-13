@@ -320,8 +320,8 @@ class RestoDAO {
     public static function delete(int $idR): bool {
         $resultat = false;
         try {
-            $stmt = Bdd::getConnexion()->prepare("DELETE FROM CRITIQUER WHERE idR=:idR","DELETE FROM PHOTO WHERE idR=:idR","DELETE FROM PROPOSER WHERE idR=:idR","DELETE FROM AIMER WHERE idR=:idR","DELETE FROM resto WHERE idR=:idR");
-            $stmt->bindParam(':idR', $idR, PDO::PARAM_INT);
+            $stmt = Bdd::getConnexion()->prepare("DELETE FROM resto WHERE idR=?");
+            $stmt->bindParam('1', $idR);
             $resultat = $stmt->execute();
         } catch (PDOException $e) {
             throw new Exception("Erreur dans la méthode " . get_called_class() . "::delete : <br/>" . $e->getMessage());
