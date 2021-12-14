@@ -151,4 +151,34 @@ class UtilisateurDAO {
         return $ok;
     }
 
+    private static function enregistrementVersObjet(array $enreg): Utilisateur {
+        $id = $enreg['idU'];
+        // Instanciation sans les associations
+        $utilisateur = new Utilisateur(
+            $enreg['idU'], $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU'], $enreg['admin']
+        );
+
+        return $utilisateur;
+    }
+
+    public static function getAll(): array {
+        $lesObjets = array();
+        try {
+            $requete = "SELECT * FROM utilisateur";
+            $stmt = Bdd::getConnexion()->prepare($requete);
+            $ok = $stmt->execute();
+            // attention, $ok = true pour un select ne retournant aucune ligne
+            if ($ok) {
+                // Pour chaque enregistrement
+                while ($enreg = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    //Instancier un nouveau restaurant et l'ajouter à la liste
+                    $lesObjets[] = self::enregistrementVersObjet($enreg);
+                }
+            }
+        } catch (PDOException $e) {
+            throw new Exception("Erreur dans la méthode " . get_called_class() . "::getAll : <br/>" . $e->getMessage());
+        }
+        return $lesObjets;
+    }
+
 }

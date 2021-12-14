@@ -2,7 +2,7 @@
 
 use modele\dao\Bdd;
 use modele\dao\UtilisateurDAO;
-use modele_dao_TypeCuisine;
+use modele\dao\TypeCuisine;
 /**
  * ----------
  * vueAccueil
@@ -17,7 +17,6 @@ use modele_dao_TypeCuisine;
  * Variables supplémentaires :  
    ------------------------- */
 /** @var Resto  $unResto */
-/** @var Photo  $laPhotoPrincipale */
 /** @var TypeCuisine  $unTC */
 ?>
 <div id="accroche">Gestion des types de cuisines</div>

@@ -2,8 +2,8 @@
 
 use modele\dao\Bdd;
 use modele\dao\UtilisateurDAO;
-use modele_dao\RestoDAO;
-use modele_metier\Utilisateur;
+use model\dao\RestoDAO;
+use modele\metier\Utilisateur;
 /**
  * ----------
  * vueGestUtil
@@ -17,11 +17,23 @@ use modele_metier\Utilisateur;
 /**
  * Variables supplémentaires :  
    ------------------------- */
-/** @var Resto  $unResto */
-/** @var Photo  $laPhotoPrincipale */
-/** @var TypeCuisine  $unTC */
+
 ?>
 <div id="accroche">Gestion des utilisateurs</div>
+<div class="container_list">
+    <table>
+<?php 
+    for ($i = 0; $i < count($listeUtilisateurs); $i++) { 
+        $unUtilisateur = $listeUtilisateurs[$i];
+        ?>
+    <tr><td><input type="checkbox" name="idUtilisateur" id="idUtilisateur<?= $i ?>" value="<?= $unUtilisateur->getIdU() ?>" >
+    <label for="Pseudo<?= $i ?>"><?= $unUtilisateur->getPseudoU() ?></label></td>
+    <td><button class="button_delete"><a class="supp" href='./?action=supprimerUtilisateur&idU=<?= $unTypeCuisine->getIdU(); ?>'>Supprimer</a></button></td>
+</tr>
+    <?php 
+    }
+     ?>
+     </table></div>
 
 
 

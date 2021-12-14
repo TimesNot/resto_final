@@ -1,6 +1,7 @@
 <?php
 use modele\dao\Bdd;
 use modele\dao\UtilisateurDAO;
+use modele\metier\Utilisateur;
 
 /**
  * Contrôleur monProfil
@@ -21,20 +22,19 @@ Bdd::connecter();
 // Récupération des données utilisées dans la vue 
 // creation du menu burger
 $menuBurger = array();
-$menuBurger[] = Array("url"=>"./?action=profil","label"=>"Consulter mon profil");
-$menuBurger[] = Array("url"=>"./?action=updProfil","label"=>"Modifier mon profil");
+$menuBurger[] = array("url"=>"./?action=profil","label"=>"Consulter mon profil");
+$menuBurger[] = array("url"=>"./?action=updProfil","label"=>"Modifier mon profil");
 $menuBurger[] = array("url"=>"./?action=gestUtil" ,"label"=>"Gestion des utilisateurs");
 $menuBurger[] = array("url"=>"./?action=gestCuisine" ,"label"=>"Gestion des types de cuisines");
 $menuBurger[] = array("url"=>"./?action=ajouterResto","label"=>"Ajouter un restaurant");
 $menuBurger[] = array("url"=>"./?action=modifierResto","label"=>"Modifier un restaurant");
 $menuBurger[] = array("url"=>"./?action=admin","label"=>"Supprimer un restaurant");
 
-
+$listeTypeCuisine =  UtilisateurDAO::getAll();
 // Construction de la vue
 $titre = "Gestion des utilisateurs";
 if (isLoggedOn()){
     // Si un utilisateur est connecté
-    // Données spécifiques à la page vueMonProfil
     // Construction de la vue
     require_once "$racine/vue/entete.html.php";
     require_once "$racine/vue/vueGestUtil.php";
