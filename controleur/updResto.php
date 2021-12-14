@@ -5,7 +5,7 @@ use modele\dao\UtilisateurDAO;
 use modele\dao\TypeCuisineDAO;
 use modele\dao\AimerDAO;
 use modele\dao\PrefererDAO;
-
+use modele\dao\RestoDAO;
 
 Bdd::connecter();
 
@@ -23,58 +23,58 @@ $titre = "Modifier un restaurant";
 
 
 // Si un utilisateur est connecté
-if (isLoggedOn()) {
-    // récupérer son identité
-    $idR = getIdRLoggedOn();
-    $resto = RestoDAO::getOneById($idR);
+// if (isLoggedOn()) {
+//     // récupérer son identité
+//     $idR = getIdRLoggedOn();
+//     $resto = RestoDAO::getOneById($idR);
 
-    // Mise à jour de l'objet Utilisateur $util en fonction des saisies
-    // Nouveau nom resto
-    $nomR = "";
-    if (isset($_POST["nomR"])) {
-        $nomR = $_POST["nomR"];
-        if ($nomR != "") {
-            $resto->setPseudoU($pseudoU);
-            RestoDAO::update_nomR($resto);
-        }
-    }
+//     // Mise à jour de l'objet Utilisateur $util en fonction des saisies
+//     // Nouveau nom resto
+//     $nomR = "";
+//     if (isset($_POST["nomR"])) {
+//         $nomR = $_POST["nomR"];
+//         if ($nomR != "") {
+//             $resto->setPseudoU($pseudoU);
+//             RestoDAO::update_nomR($resto);
+//         }
+//     }
 
-   $numAdrR = "";
-    if (isset($_POST["numAdrR"])) {
-        $numAdrR = $_POST["numAdrR"];
-        if ($numAdrR != "") {
-            $resto->setPseudoU($pseudoU);
-            RestoDAO::update_numAdrR($resto);
-        }
-    }
+//    $numAdrR = "";
+//     if (isset($_POST["numAdrR"])) {
+//         $numAdrR = $_POST["numAdrR"];
+//         if ($numAdrR != "") {
+//             $resto->setPseudoU($pseudoU);
+//             RestoDAO::update_numAdrR($resto);
+//         }
+//     }
 
-   $voieAdrR = "";
-    if (isset($_POST["voieAdrR"])) {
-        $voieAdrR = $_POST["voieAdrR"];
-        if ($voieAdrR != "") {
-            $resto->setPseudoU($pseudoU);
-            RestoDAO::update_voieAdrR($resto);
-        }
-    }
+//    $voieAdrR = "";
+//     if (isset($_POST["voieAdrR"])) {
+//         $voieAdrR = $_POST["voieAdrR"];
+//         if ($voieAdrR != "") {
+//             $resto->setPseudoU($pseudoU);
+//             RestoDAO::update_voieAdrR($resto);
+//         }
+//     }
     
-    $descR = "";
-    if (isset($_POST["descR"])) {
-        $descR = $_POST["descR"];
-        if ($descR != "") {
-            $resto->setPseudoU($pseudoU);
-            RestoDAO::update_descR($resto);
-        }
-    }
-    $horairesR = "";
-    if (isset($_POST["horairesR"])) {
-        $horairesR = $_POST["horairesR"];
-        if ($horairesR != "") {
-            $resto->setPseudoU($pseudoU);
-            RestoDAO::update_horairesR($resto);
-        }
-    }
-    }
-    // Types de cuisine à ajouter à la liste des types de cuisine préférés
+//     $descR = "";
+//     if (isset($_POST["descR"])) {
+//         $descR = $_POST["descR"];
+//         if ($descR != "") {
+//             $resto->setPseudoU($pseudoU);
+//             RestoDAO::update_descR($resto);
+//         }
+//     }
+//     $horairesR = "";
+//     if (isset($_POST["horairesR"])) {
+//         $horairesR = $_POST["horairesR"];
+//         if ($horairesR != "") {
+//             $resto->setPseudoU($pseudoU);
+//             RestoDAO::update_horairesR($resto);
+//         }
+//     }
+//     }
+//     // Types de cuisine à ajouter à la liste des types de cuisine préférés
     
     
 
@@ -90,7 +90,6 @@ if (isLoggedOn()) {
         // Sinon, on revient sur le formulaire
         // Recharger les données
         $util = RestoDAO::getOneById($idR);
-
         // Construction de la vue
         require_once "$racine/vue/entete.html.php";
         require_once "$racine/vue/vueUpdProfil.php";

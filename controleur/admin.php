@@ -14,6 +14,7 @@ Bdd::connecter();
 $menuBurger = array();
 $menuBurger[] = Array("url"=>"./?action=profil","label"=>"Consulter mon profil");
 $menuBurger[] = Array("url"=>"./?action=updProfil","label"=>"Modifier mon profil");
+$menuBurger[] = Array("url"=>"./?action=gest_util" ,"label"=>"Gestion des utilisateurs");
 $menuBurger[] = array("url"=>"./?action=ajouterResto","label"=>"Ajouter un restaurant");
 $menuBurger[] = array("url"=>"./?action=modifierResto","label"=>"Modifier un restaurant");
 $menuBurger[] = array("url"=>"./?action=admin","label"=>"Supprimer un restaurant");

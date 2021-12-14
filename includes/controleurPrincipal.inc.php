@@ -25,6 +25,8 @@ function controleurPrincipal(string $action) : string {
     $lesActions["modifierResto"] = "updResto.php";
     $lesActions["supprimerResto"] = "supprimerResto.php";
     $lesActions["admin"] = "admin.php";
+    $lesActions["gest_util"] = "gest_util.php";
+    $lesActions["gest_cuisine"] = "gest_cuisine.php";
 
 
     
@@ -32,8 +34,8 @@ function controleurPrincipal(string $action) : string {
         return $lesActions[$action];
     }
     else{
-        //throw new Exception("La page demandé n'hésiste pas !");
-        ajouterMessage("la page demandé n'héxiste pas");
+        //throw new Exception("La page demandée n'hésiste pas !");
+        ajouterMessage("la page demandé n'existe pas");
         return $lesActions["defaut"];
     }
 
