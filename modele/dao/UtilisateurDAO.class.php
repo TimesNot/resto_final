@@ -155,7 +155,7 @@ class UtilisateurDAO {
         $id = $enreg['idU'];
         // Instanciation sans les associations
         $utilisateur = new Utilisateur(
-            $enreg['idU'], $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU'], $enreg['admin']
+            $enreg['idU'], $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU']
         );
 
         return $utilisateur;
@@ -179,6 +179,17 @@ class UtilisateurDAO {
             throw new Exception("Erreur dans la méthode " . get_called_class() . "::getAll : <br/>" . $e->getMessage());
         }
         return $lesObjets;
+    }
+    public static function delete(int $idU): bool {
+        $resultat = false;
+        try {
+            $stmt = Bdd::getConnexion()->prepare("DELETE FROM utilisateur WHERE idR=?");
+            $stmt->bindParam('1', $idU);
+            $resultat = $stmt->execute();
+        } catch (PDOException $e) {
+            throw new Exception("Erreur dans la méthode " . get_called_class() . "::delete : <br/>" . $e->getMessage());
+        }
+        return $resultat;
     }
 
 }

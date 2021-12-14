@@ -28,7 +28,7 @@ use modele\metier\Utilisateur;
         ?>
     <tr><td><input type="checkbox" name="idUtilisateur" id="idUtilisateur<?= $i ?>" value="<?= $unUtilisateur->getIdU() ?>" >
     <label for="Pseudo<?= $i ?>"><?= $unUtilisateur->getPseudoU() ?></label></td>
-    <td><button class="button_delete"><a class="supp" href='./?action=supprimerUtilisateur&idU=<?= $unTypeCuisine->getIdU(); ?>'>Supprimer</a></button></td>
+    <td><button class="button_delete"><a class="supp" href='./?action=supprimerUtilisateur&idU=<?= $unUtilisateur->getIdU(); ?>'>Supprimer</a></button></td>
 </tr>
     <?php 
     }

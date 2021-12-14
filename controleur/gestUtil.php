@@ -30,7 +30,7 @@ $menuBurger[] = array("url"=>"./?action=ajouterResto","label"=>"Ajouter un resta
 $menuBurger[] = array("url"=>"./?action=modifierResto","label"=>"Modifier un restaurant");
 $menuBurger[] = array("url"=>"./?action=admin","label"=>"Supprimer un restaurant");
 
-$listeTypeCuisine =  UtilisateurDAO::getAll();
+$listeUtilisateurs =  UtilisateurDAO::getAll();
 // Construction de la vue
 $titre = "Gestion des utilisateurs";
 if (isLoggedOn()){
