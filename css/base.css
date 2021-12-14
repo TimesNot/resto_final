@@ -241,11 +241,11 @@ a.aimer{
     text-decoration: none;
     color: white;
 }
-.button_supp{
+.button_delete{
     background-color: red;
     border: 2px solid red;
 }
- .container_cuisine{
+ .container_list{
     display: flex;
     justify-content: center;
 } 

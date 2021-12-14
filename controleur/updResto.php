@@ -13,8 +13,8 @@ Bdd::connecter();
 $menuBurger = array();
 $menuBurger[] = Array("url"=>"./?action=profil","label"=>"Consulter mon profil");
 $menuBurger[] = Array("url"=>"./?action=updProfil","label"=>"Modifier mon profil");
-$menuBurger[] = array("url"=>"./?action=gest_util" ,"label"=>"Gestion des utilisateurs");
-$menuBurger[] = array("url"=>"./?action=gest_cuisine" ,"label"=>"Gestion des types de cuisines");
+$menuBurger[] = array("url"=>"./?action=gestUtil" ,"label"=>"Gestion des utilisateurs");
+$menuBurger[] = array("url"=>"./?action=gestCuisine" ,"label"=>"Gestion des types de cuisines");
 $menuBurger[] = array("url"=>"./?action=ajouterResto","label"=>"Ajouter un restaurant");
 $menuBurger[] = array("url"=>"./?action=modifierResto","label"=>"Modifier un restaurant");
 $menuBurger[] = array("url"=>"./?action=admin","label"=>"Supprimer un restaurant");
@@ -25,58 +25,57 @@ $titre = "Modifier un restaurant";
 
 
 // Si un utilisateur est connecté
-// if (isLoggedOn()) {
-//     // récupérer son identité
-//     $idR = getIdRLoggedOn();
-//     $resto = RestoDAO::getOneById($idR);
+ if (isLoggedOn()) {
+// récupérer son identité
+     $idR = getIdRLoggedOn();
+     $resto = RestoDAO::getOneById($idR);
 
-//     // Mise à jour de l'objet Utilisateur $util en fonction des saisies
-//     // Nouveau nom resto
-//     $nomR = "";
-//     if (isset($_POST["nomR"])) {
-//         $nomR = $_POST["nomR"];
-//         if ($nomR != "") {
-//             $resto->setPseudoU($pseudoU);
-//             RestoDAO::update_nomR($resto);
-//         }
-//     }
+     // Mise à jour de l'objet Utilisateur $util en fonction des saisies
+     // Nouveau nom resto
+     $nomR = "";
+     if (isset($_POST["nomR"])) {
+         $nomR = $_POST["nomR"];
+         if ($nomR != "") {
+             $resto->setPseudoU($pseudoU);
+             RestoDAO::update_nomR($resto);
+         }
+     }
 
-//    $numAdrR = "";
-//     if (isset($_POST["numAdrR"])) {
-//         $numAdrR = $_POST["numAdrR"];
-//         if ($numAdrR != "") {
-//             $resto->setPseudoU($pseudoU);
-//             RestoDAO::update_numAdrR($resto);
-//         }
-//     }
-
-//    $voieAdrR = "";
-//     if (isset($_POST["voieAdrR"])) {
-//         $voieAdrR = $_POST["voieAdrR"];
-//         if ($voieAdrR != "") {
-//             $resto->setPseudoU($pseudoU);
-//             RestoDAO::update_voieAdrR($resto);
-//         }
-//     }
+    $numAdrR = "";
+     if (isset($_POST["numAdrR"])) {
+         $numAdrR = $_POST["numAdrR"];
+         if ($numAdrR != "") {
+             $resto->setPseudoU($pseudoU);
+             RestoDAO::update_numAdrR($resto);
+         }
+     }
+    $voieAdrR = "";
+     if (isset($_POST["voieAdrR"])) {
+         $voieAdrR = $_POST["voieAdrR"];
+         if ($voieAdrR != "") {
+             $resto->setPseudoU($pseudoU);
+             RestoDAO::update_voieAdrR($resto);
+         }
+     }
     
-//     $descR = "";
-//     if (isset($_POST["descR"])) {
-//         $descR = $_POST["descR"];
-//         if ($descR != "") {
-//             $resto->setPseudoU($pseudoU);
-//             RestoDAO::update_descR($resto);
-//         }
-//     }
-//     $horairesR = "";
-//     if (isset($_POST["horairesR"])) {
-//         $horairesR = $_POST["horairesR"];
-//         if ($horairesR != "") {
-//             $resto->setPseudoU($pseudoU);
-//             RestoDAO::update_horairesR($resto);
-//         }
-//     }
-//     }
-//     // Types de cuisine à ajouter à la liste des types de cuisine préférés
+     $descR = "";
+     if (isset($_POST["descR"])) {
+         $descR = $_POST["descR"];
+         if ($descR != "") {
+             $resto->setPseudoU($pseudoU);
+             RestoDAO::update_descR($resto);
+         }
+     }
+     $horairesR = "";
+     if (isset($_POST["horairesR"])) {
+         $horairesR = $_POST["horairesR"];
+         if ($horairesR != "") {
+             $resto->setPseudoU($pseudoU);
+             RestoDAO::update_horairesR($resto);
+         }
+     }
+     }
+     // Types de cuisine à ajouter à la liste des types de cuisine préférés
     
     
 

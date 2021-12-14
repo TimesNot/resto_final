@@ -21,7 +21,7 @@ use modele_metier\Utilisateur;
 /** @var Photo  $laPhotoPrincipale */
 /** @var TypeCuisine  $unTC */
 ?>
-<div id="accroche">Modifier un restaurant</div>
+<div id="accroche">Gestion des utilisateurs</div>
 
 
 
