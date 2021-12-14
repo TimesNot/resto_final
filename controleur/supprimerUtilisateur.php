@@ -27,9 +27,8 @@ if (!isset($_GET["idU"])) {
     $idU = intval($_GET["idU"]);
 
 // Un utilisateur doit être connecté
-    $idU = getIdULoggedOn();
     if ($idU != 0) {
-        Utilisateur::delete($idU);
+        UtilisateurDAO::delete($idU);
     }
 
 // redirection vers la page d'origine

@@ -183,7 +183,7 @@ class UtilisateurDAO {
     public static function delete(int $idU): bool {
         $resultat = false;
         try {
-            $stmt = Bdd::getConnexion()->prepare("DELETE FROM utilisateur WHERE idR=?");
+            $stmt = Bdd::getConnexion()->prepare("DELETE FROM utilisateur WHERE idU=?");
             $stmt->bindParam('1', $idU);
             $resultat = $stmt->execute();
         } catch (PDOException $e) {
