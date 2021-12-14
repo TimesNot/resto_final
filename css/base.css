@@ -237,3 +237,15 @@ a.aimer{
 #alerte{
     background-color: #FC2500;
 }
+.supp{
+    text-decoration: none;
+    color: white;
+}
+.button_supp{
+    background-color: red;
+    border: 2px solid red;
+}
+ .container_cuisine{
+    display: flex;
+    justify-content: center;
+} 

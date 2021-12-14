@@ -27,6 +27,7 @@ function controleurPrincipal(string $action) : string {
     $lesActions["admin"] = "admin.php";
     $lesActions["gest_util"] = "gest_util.php";
     $lesActions["gest_cuisine"] = "gest_cuisine.php";
+    $lesActions["supprimerTypeCuisine"] = "supprimerTypeCuisine.php";
 
 
     

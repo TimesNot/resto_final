@@ -1,6 +1,8 @@
 <?php
 use modele\dao\Bdd;
 use modele\dao\UtilisateurDAO;
+use modele\dao\TypeCuisineDAO;
+use modele\metier\TypeCuisine;
 
 /**
  * Contrôleur monProfil
@@ -29,19 +31,23 @@ $menuBurger[] = array("url"=>"./?action=ajouterResto","label"=>"Ajouter un resta
 $menuBurger[] = array("url"=>"./?action=modifierResto","label"=>"Modifier un restaurant");
 $menuBurger[] = array("url"=>"./?action=admin","label"=>"Supprimer un restaurant");
 
+
+$listeTypeCuisine =  TypeCuisineDAO::getAll();
+
 // Construction de la vue
 $titre = "Gestion des cuisines";
 if (isLoggedOn()){
     // Si un utilisateur est connecté
-    // Données spécifiques à la page vueMonProfil
-    $idU = getIdULoggedOn();
-    $mailU = getMailULoggedOn();
-    $util = UtilisateurDAO::getOneById($idU);   
-    $mesRestosAimes = $util->getLesRestosAimes();
-    $mesTypeCuisinePreferes = $util->getLesTypesCuisinePreferes();
+    // Données spécifiques à la page vuegest_cuisine
+    // $idU = getIdULoggedOn();
+    // $mailU = getMailULoggedOn();
+    // $type_cuisine = 
+    // $util = UtilisateurDAO::getOneById($idU);   
+    // $mesRestosAimes = $util->getLesRestosAimes();
+    // $mesTypeCuisinePreferes = $util->getLesTypesCuisinePreferes();
     // Construction de la vue
     require_once "$racine/vue/entete.html.php";
-    require_once "$racine/vue/vueMonProfil.php";
+    require_once "$racine/vue/vuegest_cuisine.php";
  }
 else{
     // Si un aucun utilisateur n'est connecté

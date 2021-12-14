@@ -135,4 +135,17 @@ class TypeCuisineDAO {
         return $lesObjets;
     }
 
+    public static function delete(int $idTC): bool {
+        $resultat = false;
+        try {
+            $stmt = Bdd::getConnexion()->prepare("DELETE FROM typecuisine WHERE idTC=?");
+            $stmt->bindParam('1', $idTC);
+            $resultat = $stmt->execute();
+        } catch (PDOException $e) {
+            throw new Exception("Erreur dans la méthode " . get_called_class() . "::delete : <br/>" . $e->getMessage());
+        }
+        return $resultat;
+    }
+
+
 }
