@@ -42,7 +42,7 @@ class UtilisateurDAO {
                 $idU = $enreg['idU'];
                 $lesRestosAimes = RestoDAO::getAimesByIdU($idU);
                 $lesTcPref = TypeCuisineDAO::getAllPreferesByIdU($idU);
-                $leUser = new Utilisateur($idU, $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU']);
+                $leUser = new Utilisateur($idU, $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU'],$enreg['adminU']);
                 $leUser->setLesTypesCuisinePreferes($lesTcPref);
                 $leUser->setLesRestosAimes($lesRestosAimes);
             }
@@ -70,7 +70,7 @@ class UtilisateurDAO {
                 $enreg = $stmt->fetch(PDO::FETCH_ASSOC);
                 $lesRestosAimes = RestoDAO::getAimesByIdU($idU);
                 $lesTcPref = TypeCuisineDAO::getAllPreferesByIdU($idU);
-                $leUser = new Utilisateur($idU, $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU']);
+                $leUser = new Utilisateur($idU, $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU'], $enreg['adminU']);
                 $leUser->setLesTypesCuisinePreferes($lesTcPref);
                 $leUser->setLesRestosAimes($lesRestosAimes);
             }
@@ -115,13 +115,15 @@ class UtilisateurDAO {
     public static function update(Utilisateur $unUser): bool {
         $ok = false;
         try {
-        $requete = "UPDATE utilisateur SET mailU = :mailU, pseudoU = :pseudoU WHERE idU = :idU";
+        $requete = "UPDATE utilisateur SET mailU = :mailU, pseudoU = :pseudoU , adminU = :adminU WHERE idU = :idU";
         $stmt = Bdd::getConnexion()->prepare($requete);
 //        $mdpUCrypt = crypt($unUser->getMdpU(), "sel");
         $stmt->bindValue(':mailU', $unUser->getMailU(), PDO::PARAM_STR);
 //        $stmt->bindValue(':mdpU', $mdpUCrypt, PDO::PARAM_STR);
         $stmt->bindValue(':pseudoU', $unUser->getPseudoU(), PDO::PARAM_STR);
         $stmt->bindValue(':idU', $unUser->getIdU(), PDO::PARAM_INT);
+        $stmt->bindValue(':adminU', $unUser->getAdminU(), PDO::PARAM_INT);
+
         $ok = $stmt->execute();
         } catch (PDOException $e) {
             throw new Exception("Erreur dans la méthode " . get_called_class() . "::update : <br/>" . $e->getMessage());
@@ -155,7 +157,7 @@ class UtilisateurDAO {
         $id = $enreg['idU'];
         // Instanciation sans les associations
         $utilisateur = new Utilisateur(
-            $enreg['idU'], $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU']
+            $enreg['idU'], $enreg['mailU'], $enreg['mdpU'], $enreg['pseudoU'],$enreg['adminU']
         );
 
         return $utilisateur;

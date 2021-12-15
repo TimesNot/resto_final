@@ -48,7 +48,8 @@ foreach ($listeRestos as $unResto) {
             <?= $unResto->getVilleR() ?>
         </div>
         <div class="tagCard">
-            <ul id="tagFood">		
+            <ul id="tagFood">
+            <button class="updButton">Modifier</button>		
                 <?php
                 foreach ($lesTypesCuisineProposes as $unTC) {
                     ?>

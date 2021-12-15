@@ -17,23 +17,27 @@ class Utilisateur {
     private ?string $mdpU;
     /** @var string pseudonyme */
     private ?string $pseudoU;
+    /** @var int admin 1 si administrateur */
+    private int $adminU;
     /** @var array tableau<TypesCuisine> liste des types de cuisine préférés par l'utilisateur */
     private array $lesTypesCuisinePreferes;
     /** @var array tableau<Resto> : liste des restaurants "aimés" par l'utilisateur */
     private array $lesRestosAimes;
     
     
-    function __construct(int $idU, string $mailU, ?string $mdpU, ?string $pseudoU) {
+    
+    function __construct(int $idU, string $mailU, ?string $mdpU, ?string $pseudoU,?int $adminU) {
         $this->idU = $idU;
         $this->mailU = $mailU;
         $this->mdpU = $mdpU;
         $this->pseudoU = $pseudoU;
+        $this->adminU = $adminU;
         $this->lesTypesCuisinePreferes = array();
         $this->lesRestosAimes = array();
     }
     
     public function __toString() {
-        return get_class()."{id=".$this->idU.", mail=".$this->mailU." ,mdp=".$this->mdpU." ,pseudo=".$this->pseudoU.", ... }" ;
+        return get_class()."{id=".$this->idU.", mail=".$this->mailU." ,mdp=".$this->mdpU." ,pseudo=".$this->pseudoU." ,admin=".$this->adminU.", ... }" ;
     }    
 
     function getIdU(): int {
@@ -50,6 +54,9 @@ class Utilisateur {
 
     function getPseudoU(): ?string {
         return $this->pseudoU;
+    }
+    function getAdminU(): int {
+        return $this->adminU;
     }
 
     function getLesTypesCuisinePreferes(): array {
@@ -74,6 +81,9 @@ class Utilisateur {
 
     function setPseudoU(string $pseudoU): void {
         $this->pseudoU = $pseudoU;
+    }
+    function setAdminU(int $adminU): void {
+        $this->adminU = $adminU;
     }
 
     function setLesTypesCuisinePreferes(array $lesTC): void {
