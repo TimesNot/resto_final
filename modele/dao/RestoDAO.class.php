@@ -336,14 +336,14 @@ class RestoDAO {
 
                 //Affectation de toutes les valeures
         $stmt->bindValue('1', $unResto->getNomR());
-        $stmt->bindValue('2', $unResto->getNumAdR());
-        $stmt->bindValue('3', $unResto->getVoieAdR());
+        $stmt->bindValue('2', $unResto->getNumAdr());
+        $stmt->bindValue('3', $unResto->getVoieAdr());
         $stmt->bindValue('4', $unResto->getCpR());
         $stmt->bindValue('5', $unResto->getVilleR());
-        $stmt->bindValue('6', $unResto->getLattitudeDegR());
+        $stmt->bindValue('6', $unResto->getLatitudeDegR());
         $stmt->bindValue('7', $unResto->getLongitudeDegR());
         $stmt->bindValue('8', $unResto->getDescR());
-        $stmt->bindValue('9', $unResto->getHoraireR());
+        $stmt->bindValue('9', $unResto->getHorairesR());
         $stmt->bindValue('10', $unResto->getIdR());
 
         $ok = $stmt->execute();

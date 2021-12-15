@@ -22,7 +22,7 @@ function controleurPrincipal(string $action) : string {
     $lesActions["commenter"] = "commenter.php";
     $lesActions["supprimerCritique"] = "supprimerCritique.php";
     $lesActions["ajouterResto"] = "ajouterResto.php";
-    $lesActions["modifierResto"] = "updResto.php";
+    $lesActions["updResto"] = "updResto.php";
     $lesActions["supprimerResto"] = "supprimerResto.php";
     $lesActions["admin"] = "admin.php";
     $lesActions["gestUtil"] = "gestUtil.php";
