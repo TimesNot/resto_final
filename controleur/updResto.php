@@ -5,8 +5,16 @@ use modele\dao\UtilisateurDAO;
 use modele\dao\TypeCuisineDAO;
 use modele\dao\AimerDAO;
 use modele\dao\PrefererDAO;
-use modele\dao\RestoDAO;
 
+/**
+ * Contrôleur updProfil
+ * Page d'affichage des caractéristiques d'un utilisateur
+ * 
+ * Vues contrôlées : vueUpdProfil, vueAuthentification.php
+ * 
+ * @version 07/2021 intégration couche modèle objet
+ * @version 08/2021 gestion erreurs
+ */
 Bdd::connecter();
 
 // creation du menu burger
@@ -21,65 +29,61 @@ $menuBurger[] = array("url"=>"./?action=admin","label"=>"Supprimer un restaurant
 
 
 // Initialisations 
-$titre = "Modifier un restaurant";
-
+$titre = "Mon profil";
 
 // Si un utilisateur est connecté
- if (isLoggedOn()) {
-// récupérer son identité
-     $idR = getIdRLoggedOn();
-     $resto = RestoDAO::getOneById($idR);
+if (isLoggedOn()) {
+    // récupérer son identité
+    $idU = getIdULoggedOn();
+    $util = UtilisateurDAO::getOneById($idU);
 
-     // Mise à jour de l'objet Utilisateur $util en fonction des saisies
-     // Nouveau nom resto
-     $nomR = "";
-     if (isset($_POST["nomR"])) {
-         $nomR = $_POST["nomR"];
-         if ($nomR != "") {
-             $resto->setPseudoU($pseudoU);
-             RestoDAO::update_nomR($resto);
-         }
-     }
+    // Mise à jour de l'objet Utilisateur $util en fonction des saisies
+    // Nouveau pseudo
+    $pseudoU = "";
+    if (isset($_POST["pseudoU"])) {
+        $pseudoU = $_POST["pseudoU"];
+        if ($pseudoU != "") {
+            $util->setPseudoU($pseudoU);
+            UtilisateurDAO::update($util);
+        }
+    }
 
-    $numAdrR = "";
-     if (isset($_POST["numAdrR"])) {
-         $numAdrR = $_POST["numAdrR"];
-         if ($numAdrR != "") {
-             $resto->setPseudoU($pseudoU);
-             RestoDAO::update_numAdrR($resto);
-         }
-     }
-    $voieAdrR = "";
-     if (isset($_POST["voieAdrR"])) {
-         $voieAdrR = $_POST["voieAdrR"];
-         if ($voieAdrR != "") {
-             $resto->setPseudoU($pseudoU);
-             RestoDAO::update_voieAdrR($resto);
-         }
-     }
-    
-     $descR = "";
-     if (isset($_POST["descR"])) {
-         $descR = $_POST["descR"];
-         if ($descR != "") {
-             $resto->setPseudoU($pseudoU);
-             RestoDAO::update_descR($resto);
-         }
-     }
-     $horairesR = "";
-     if (isset($_POST["horairesR"])) {
-         $horairesR = $_POST["horairesR"];
-         if ($horairesR != "") {
-             $resto->setPseudoU($pseudoU);
-             RestoDAO::update_horairesR($resto);
-         }
-     }
-     }
-     // Types de cuisine à ajouter à la liste des types de cuisine préférés
-    
-    
+    // Nouveau mot de passe
+    $mdpU = "";
+    if (isset($_POST["mdpU"]) && isset($_POST["mdpU2"])) {
+        if ($_POST["mdpU"] != "") {
+            if (($_POST["mdpU"] == $_POST["mdpU2"])) {
+                $mdpU = $_POST["mdpU"];
+                UtilisateurDAO::updateMdp($idU, $mdpU);
+                logout();
+            } else {
+                ajouterMessage("Mise à jour du profil : erreur de saisie du mot de passe");
+            }
+        }
+    }
 
-    
+    // Restaurants à supprimer de la liste des restaurants aimés
+    if (isset($_POST["lstidR"])) {
+        $lstidR = $_POST["lstidR"];
+        for ($i = 0; $i < count($lstidR); $i++) {
+            AimerDAO::delete($idU, $lstidR[$i]);
+        }
+    }
+    // Types de cuisine à ajouter à la liste des types de cuisine préférés
+    if (isset($_POST["addLstidTC"])) {
+        $addLstidTC = $_POST["addLstidTC"];
+        for ($i = 0; $i < count($addLstidTC); $i++) {
+            PrefererDAO::insert($idU, $addLstidTC[$i]);
+        }
+    }
+
+    // Types de cuisine à supprimer de liste des types de cuisine préférés
+    if (isset($_POST["delLstidTC"])) {
+        $delLstidTC = $_POST["delLstidTC"];
+        for ($i = 0; $i < count($delLstidTC); $i++) {
+            PrefererDAO::delete($idU, $delLstidTC[$i]);
+        }
+    }
 
 // Si on a changé le mot de passe, il faut se reconnecter
     if (!isLoggedOn()) {
@@ -90,12 +94,21 @@ $titre = "Modifier un restaurant";
     } else {
         // Sinon, on revient sur le formulaire
         // Recharger les données
-        $util = RestoDAO::getOneById($idR);
+        $util = UtilisateurDAO::getOneById($idU);
+        $mesRestosAimes = $util->getLesRestosAimes();
+        $mesTypeCuisinePreferes = $util->getLesTypesCuisinePreferes();
+        $lesAutresTypesCuisine = TypeCuisineDAO::getAllNonPreferesByIdU($idU);
+
         // Construction de la vue
         require_once "$racine/vue/entete.html.php";
         require_once "$racine/vue/vueUpdProfil.php";
         require_once "$racine/vue/pied.html.php";
     }
+} else {
+    // Si aucun utilisateur n'est connecté
+    // Construction de la vue vide
+    ajouterMessage("Update profil : aucun utilisateur n'est connecté");
+    require_once "$racine/vue/entete.html.php";
+    require_once "$racine/vue/pied.html.php";
+}
 ?>
-
-

@@ -328,5 +328,28 @@ class RestoDAO {
         }
         return $resultat;
     }
+    public static function update(Resto $unResto): bool {
+        $ok = false;
+        try {
+        $requete = "UPDATE `resto` SET `nomR`=?,`numAdrR`=?,`voieAdrR`=?,`cpR`=?,`villeR`=?,`latitudeDegR`=?,`longitudeDegR`=?,`descR`=?,`horairesR`=? WHERE idr = ?";
+        $stmt = Bdd::getConnexion()->prepare($requete);
 
+                //Affectation de toutes les valeures
+        $stmt->bindValue('1', $unResto->getNomR());
+        $stmt->bindValue('2', $unResto->getNumAdR());
+        $stmt->bindValue('3', $unResto->getVoieAdR());
+        $stmt->bindValue('4', $unResto->getCpR());
+        $stmt->bindValue('5', $unResto->getVilleR());
+        $stmt->bindValue('6', $unResto->getLattitudeDegR());
+        $stmt->bindValue('7', $unResto->getLongitudeDegR());
+        $stmt->bindValue('8', $unResto->getDescR());
+        $stmt->bindValue('9', $unResto->getHoraireR());
+        $stmt->bindValue('10', $unResto->getIdR());
+
+        $ok = $stmt->execute();
+        } catch (PDOException $e) {
+            throw new Exception("Erreur dans la méthode " . get_called_class() . "::update : <br/>" . $e->getMessage());
+        }
+        return $ok;
+    }
 }
