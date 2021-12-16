@@ -23,7 +23,7 @@ use modele_metier\Utilisateur;
 ?>
 <div id="accroche">Modifier un restaurant</div>
 Nom du restaurant : <?= $resto->getNomR() ?> <br />
-<form action="./?action=updResto" method="POST">
+<form action="./?action=updResto&idR="<?= $resto->getidR(); ?> method="POST">
     <input type="text" name="name_resto" placeholder="Mettre à jour le nom du restaurant" /><br />
     <input type="submit" value="Enregistrer" /> <br>
 

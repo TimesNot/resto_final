@@ -18,6 +18,8 @@
 /** @var array $lesPhotos */
 /** @var Photo $unePhoto */
 /** @var TypeCuisine $unTC */
+/** @var util $util */
+
 ?>
 <h1>Liste des restaurants</h1>
 
@@ -49,8 +51,14 @@ foreach ($listeRestos as $unResto) {
         </div>
         <div class="tagCard">
             <ul id="tagFood">
-            <button class="updButton"><a href="./?action=updResto&idR=<?= $unResto->getIdR(); ?>">Modifier</a></button>		
                 <?php
+                if($util != null) {
+                    if($util->getAdminU()==1) { ?>
+                        <a href="./?action=updResto&idR=<?= $unResto->getIdR() ?>"><button class="deleteUtil">Modifier</button></a>
+                        <a href="./?action=supprimerResto&idR=<?= $unResto->getIdR() ?>"><button class="deleteUtil">Supprimer</button></a>
+                        <?php
+                    }
+                }
                 foreach ($lesTypesCuisineProposes as $unTC) {
                     ?>
                     <li class="tag"><span class="tag">#</span><?= $unTC->getLibelleTC() ?></li>

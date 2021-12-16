@@ -1,7 +1,8 @@
 <?php
 use modele\dao\Bdd;
 use modele\dao\RestoDAO;
-
+use modele\dao\UtilisateurDAO;
+use modele\metier\Utilisateur;
 /**
  * Contrôleur listeRestos
  * Gère l'affichage de la liste de tous les restaurants
@@ -19,6 +20,8 @@ $menuBurger[] = Array("url"=>"./?action=recherche&critere=multi","label"=>"Reche
 
 // appel des fonctions permettant de recuperer les donnees utiles a l'affichage 
 $listeRestos =  RestoDAO::getAll();
+$idU = getIdULoggedOn();
+$util = UtilisateurDAO::getOneById($idU);
 
 
 // Construction de la vue
