@@ -54,7 +54,7 @@ foreach ($listeRestos as $unResto) {
                 <?php
                 if($util != null) {
                     if($util->getAdminU()==1) { ?>
-                        <a href="./?action=updResto&idR=<?= $unResto->getIdR() ?>"><button class="deleteUtil">Modifier</button></a>
+                        <a href="./?action=formulaireModifierResto&idR=<?= $unResto->getIdR() ?>"><button class="deleteUtil">Modifier</button></a>
                         <a href="./?action=supprimerResto&idR=<?= $unResto->getIdR() ?>"><button class="deleteUtil">Supprimer</button></a>
                         <?php
                     }
