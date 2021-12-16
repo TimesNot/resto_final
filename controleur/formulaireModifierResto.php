@@ -27,99 +27,15 @@ $menuBurger[] = array("url"=>"./?action=liste","label"=>"Gestion de restaurant")
 // Initialisations 
 $titre = "Modifier mon resto";
 $idR = $_GET['idR'];
+$resto = RestoDAO::getOneById($idR);
 // Si un utilisateur est connecté
 if (isLoggedOn()) {
     // récupérer son identité
-    $idU = getIdULoggedOn();
-    $resto = RestoDAO::getOneById($idR);
-
+    
+    // variables
     // Mise à jour de l'objet Utilisateur $util en fonction des saisies
     // Nouveau nom de resto
-    $nomR = "";
-    if (isset($_POST["nomR"])) {
-        $nomR = $_POST["nomR"];
-        if ($nomR != "") {
-            $resto->setNomR($nomR);
-            RestoDAO::update($resto);
-        }
-    }
-
-    // Nouveau numéro d'adresse de resto
-    $numAdr = "";
-    if (isset($_POST["numAdr"])) {
-        $numAdr = $_POST["numAdr"];
-        if ($numAdr != "") {
-            $resto->setnumAdr($numAdr);
-            RestoDAO::update($resto);
-        }
-    }
-
-    // Nouvelle voie d'adresse de resto
-    $voieAdr = "";
-    if (isset($_POST["voieAdr"])) {
-        $voieAdr = $_POST["voieAdr"];
-        if ($voieAdr != "") {
-            $resto->setVoieAdr($voieAdr);
-            RestoDAO::update($resto);
-        }
-    }
-
-    // Nouveau code postal d'adresse de resto
-    $cpR = "";
-    if (isset($_POST["cpR"])) {
-        $cpR = $_POST["cpR"];
-        if ($cpR != "") {
-            $resto->setCpR($cpR);
-            RestoDAO::update($resto);
-        }
-    }
-    // Nouvelle ville pour l'adresse du resto
-    $villeR = "";
-    if (isset($_POST["villeR"])) {
-        $villeR = $_POST["villeR"];
-        if ($villeR != "") {
-            $resto->setCpR($cpR);
-            RestoDAO::update($resto);
-        }
-    }
-
-    // Nouvelle latitude pour l'adresse du resto
-    $latitudeDegR = "";
-    if (isset($_POST["latitudeDegR"])) {
-        $latitudeDegR = $_POST["latitudeDegR"];
-        if ($latitudeDegR != "") {
-            $resto->setLatitudeDegR($latitudeDegR);
-            RestoDAO::update($resto);
-        }
-    }
-
-    // Nouvelle longitude pour l'adresse du resto
-    $longitudeDegR = "";
-    if (isset($_POST["longitudeDegR"])) {
-        $longitudeDegR = $_POST["longitudeDegR"];
-        if ($longitudeDegR != "") {
-            $resto->setLongitudeDegR($longitudeDegR);
-            RestoDAO::update($resto);
-        }
-    }
-
-    $descR = "";
-    if (isset($_POST["descR"])) {
-        $descR = $_POST["descR"];
-        if ($descR != "") {
-            $resto->setDescR($descR);
-            RestoDAO::update($resto);
-        }
-    }
-
-    $horairesR = "";
-    if (isset($_POST["horairesR"])) {
-        $horairesR = $_POST["horairesR"];
-        if ($horairesR != "") {
-            $resto->setHorairesR($horairesR);
-            RestoDAO::update($resto);
-        }
-    }
+    
 
 // Si on a changé le mot de passe, il faut se reconnecter
     if (!isLoggedOn()) {
