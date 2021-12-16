@@ -3,8 +3,9 @@
 use modele\dao\Bdd;
 use modele\dao\UtilisateurDAO;
 use modele\dao\RestoDAO;
+use modele\metier\Resto;
 /**
- * Contrôleur updProfil
+ * Contrôleur updResto
  * Page d'affichage des caractéristiques d'un utilisateur
  * 
  * Vues contrôlées : vueUpdProfil, vueAuthentification.php
@@ -12,7 +13,6 @@ use modele\dao\RestoDAO;
  * @version 07/2021 intégration couche modèle objet
  * @version 08/2021 gestion erreurs
  */
-/** @var idR */
 Bdd::connecter();
 
 // creation du menu burger
@@ -26,13 +26,13 @@ $menuBurger[] = array("url"=>"./?action=liste","label"=>"Gestion de restaurant")
 
 
 // Initialisations 
-$titre = "Modifier mon restaurant";
-$idR = $_GET['idR'];
+$titre = "Modifier mon resto";
+$idR = $_GET[$idR];
 // Si un utilisateur est connecté
 if (isLoggedOn()) {
     // récupérer son identité
     $idU = getIdULoggedOn();
-    
+    $resto = RestoDAO::getOneById($idR);
 
     // Mise à jour de l'objet Utilisateur $util en fonction des saisies
     // Nouveau nom de resto
@@ -40,8 +40,8 @@ if (isLoggedOn()) {
     if (isset($_POST["nomR"])) {
         $nomR = $_POST["nomR"];
         if ($nomR != "") {
-            $idR->setNomR($nomR);
-            RestoDAO::update($idR);
+            $resto->setNomR($nomR);
+            RestoDAO::update($resto);
         }
     }
 
