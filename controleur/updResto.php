@@ -21,13 +21,13 @@ $menuBurger[] = array("url"=>"./?action=updProfil","label"=>"Modifier mon profil
 $menuBurger[] = array("url"=>"./?action=gestUtil" ,"label"=>"Gestion des utilisateurs");
 $menuBurger[] = array("url"=>"./?action=gestCuisine" ,"label"=>"Gestion des types de cuisines");
 $menuBurger[] = array("url"=>"./?action=ajouterResto","label"=>"Ajouter un restaurant");
-$menuBurger[] = array("url"=>"./?action=modifierResto","label"=>"Modifier un restaurant");
+$menuBurger[] = array("url"=>"./?action=liste","label"=>"Modifier un restaurant");
 $menuBurger[] = array("url"=>"./?action=admin","label"=>"Supprimer un restaurant");
 
 
 // Initialisations 
 $titre = "Modifier mon resto";
-
+$idR = $_GET['idR'];
 // Si un utilisateur est connecté
 if (isLoggedOn()) {
     // récupérer son identité
@@ -132,7 +132,7 @@ if (isLoggedOn()) {
 
         // Construction de la vue
         require_once "$racine/vue/entete.html.php";
-        require_once "$racine/vue/vueUpdResto.php";
+        require_once "$racine/vue/vueModifierRestaurant.php";
         require_once "$racine/vue/pied.html.php";
     }
 } else {

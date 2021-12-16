@@ -49,7 +49,7 @@ foreach ($listeRestos as $unResto) {
         </div>
         <div class="tagCard">
             <ul id="tagFood">
-            <button class="updButton">Modifier</button>		
+            <button class="updButton"><a href="./?action=updResto&idR=<?= $unResto->getIdR(); ?>">Modifier</a></button>		
                 <?php
                 foreach ($lesTypesCuisineProposes as $unTC) {
                     ?>
