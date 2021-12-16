@@ -24,7 +24,6 @@ function controleurPrincipal(string $action) : string {
     $lesActions["ajouterResto"] = "ajouterResto.php";
     $lesActions["updResto"] = "updResto.php";
     $lesActions["supprimerResto"] = "supprimerResto.php";
-    $lesActions["admin"] = "admin.php";
     $lesActions["gestUtil"] = "gestUtil.php";
     $lesActions["gestCuisine"] = "gestCuisine.php";
     $lesActions["supprimerTypeCuisine"] = "supprimerTypeCuisine.php";

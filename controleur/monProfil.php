@@ -21,13 +21,12 @@ Bdd::connecter();
 // Récupération des données utilisées dans la vue 
 // creation du menu burger
 $menuBurger = array();
-$menuBurger[] = Array("url"=>"./?action=profil","label"=>"Consulter mon profil");
-$menuBurger[] = Array("url"=>"./?action=updProfil","label"=>"Modifier mon profil");
+$menuBurger[] = array("url"=>"./?action=profil","label"=>"Consulter mon profil");
+$menuBurger[] = array("url"=>"./?action=updProfil","label"=>"Modifier mon profil");
 $menuBurger[] = array("url"=>"./?action=gestUtil" ,"label"=>"Gestion des utilisateurs");
 $menuBurger[] = array("url"=>"./?action=gestCuisine" ,"label"=>"Gestion des types de cuisines");
-$menuBurger[] = array("url"=>"./?action=ajouterResto","label"=>"Ajouter un restaurant");
-$menuBurger[] = array("url"=>"./?action=liste","label"=>"Modifier un restaurant");
-$menuBurger[] = array("url"=>"./?action=admin","label"=>"Supprimer un restaurant");
+$menuBurger[] = array("url"=>"./?action=liste","label"=>"Gestion de restaurant");
+
 
 // Construction de la vue
 $titre = "Mon profil";
