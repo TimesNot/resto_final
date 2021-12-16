@@ -26,7 +26,6 @@ $menuBurger[] = array("url"=>"./?action=liste","label"=>"Gestion de restaurant")
 
 
 $idR = $_POST['idR'];
-$resto = RestoDAO::getOneById($idR);
 $nomR = $_POST["nomR"];
 $NumAdrR = $_POST["NumAdrR"];
 $voieAdrR = $_POST["voieAdrR"];

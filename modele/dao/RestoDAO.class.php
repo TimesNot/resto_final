@@ -335,16 +335,16 @@ class RestoDAO {
         $stmt = Bdd::getConnexion()->prepare($requete);
 
                 //Affectation de toutes les valeures
-        $stmt->bindValue('1', $unResto->getNomR());
-        $stmt->bindValue('2', $unResto->getNumAdr());
-        $stmt->bindValue('3', $unResto->getVoieAdr());
-        $stmt->bindValue('4', $unResto->getCpR());
-        $stmt->bindValue('5', $unResto->getVilleR());
-        $stmt->bindValue('6', $unResto->getLatitudeDegR());
-        $stmt->bindValue('7', $unResto->getLongitudeDegR());
-        $stmt->bindValue('8', $unResto->getDescR());
-        $stmt->bindValue('9', $unResto->getHorairesR());
-        $stmt->bindValue('10', $unResto->getIdR());
+                $stmt->bindParam('1', $nomR);
+                $stmt->bindParam('2', $NumAdrR);
+                $stmt->bindParam('3', $voieAdrR);
+                $stmt->bindParam('4', $cpR);
+                $stmt->bindParam('5', $villeR);
+                $stmt->bindParam('6', $latitudeDegR);
+                $stmt->bindParam('7', $longitude);
+                $stmt->bindParam('8', $descR);
+                $stmt->bindParam('9', $horairesR);
+                $stmt->bindParam('10', $idR);
 
         $ok = $stmt->execute();
         } catch (PDOException $e) {
