@@ -27,7 +27,6 @@ $menuBurger[] = array("url"=>"./?action=gestUtil" ,"label"=>"Gestion des utilisa
 $menuBurger[] = array("url"=>"./?action=gestCuisine" ,"label"=>"Gestion des types de cuisines");
 $menuBurger[] = array("url"=>"./?action=liste","label"=>"Gestion de restaurant");
 
-
 // Construction de la vue
 $titre = "Mon profil";
 if (isLoggedOn()){
