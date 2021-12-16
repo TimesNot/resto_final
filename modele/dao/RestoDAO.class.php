@@ -328,7 +328,7 @@ class RestoDAO {
         }
         return $resultat;
     }
-    public static function update(Resto $unResto): bool {
+    public static function update(int $idR, string $nomR, int $NumAdrR, string $voieAdrR, string $cpR, string $villeR, int $latitudeDegR, int $longitude, string $descR, string $horairesR ): bool {
         $ok = false;
         try {
         $requete = "UPDATE `resto` SET `nomR`=?,`numAdrR`=?,`voieAdrR`=?,`cpR`=?,`villeR`=?,`latitudeDegR`=?,`longitudeDegR`=?,`descR`=?,`horairesR`=? WHERE idr = ?";

@@ -21,43 +21,43 @@ use modele\metier\Utilisateur;
 /** @var Photo  $laPhotoPrincipale */
 /** @var TypeCuisine  $unTC */
 ?>
+<?= $idR ?>
 <div id="accroche">Modifier un restaurant</div>
+
 Nom du restaurant : <?= $resto->getNomR() ?> <br />
-<form action="./?action=updResto&idR="<?= $resto->getidR() ?> method="POST">
-    <input type="text" name="nomR" placeholder="Mettre à jour le nom du restaurant" /><br />
-    <input type="submit" value="Enregistrer" /> <br>
 
-    Numéro de l'adresse du restaurant  : <?= $resto->getNumAdr() ?> <br />
-    <input type="text" name="numAdrR" placeholder="Mettre à jour le numéro " /><br />
-    <input type="submit" value="Enregistrer" /> <br>
+<form action="./?action=updResto"<?= $idR ?> method="POST">
+<input type="hidden" name="idR" value="<?=$idR ?>" /> 
+<?php echo '<input type="text" name="nomR" value="' . $resto->getNomR() . '"/>'?><br>
+    
 
-    Adresse du restaurant : <?= $resto->getVoieAdr() ?> <br />
-    <input type="text" name="voieAdrR" placeholder="Mettre à jour l'adresse du restaurant " /><br />
-    <input type="submit" value="Enregistrer" /> <br>
+    Numéro de l'adresse du restaurant  : <br />
+    <?php echo '<input type="text" name="NumAdrR" value="' . $resto->getNumAdr() . '"/>'?><br>
 
-    Code Postal : <?= $resto->getCpR() ?> <br />
-    <input type="text" name="cpR" placeholder="Mettre à jour le code postal du restaurant " /><br />
-    <input type="submit" value="Enregistrer" /> <br>
+    Adresse du restaurant : <br />
+    <?php echo '<input type="text" name="voieAdrR" value="' . $resto->getVoieAdr() . '"/>'?><br>
 
-    Ville : <?= $resto->getVilleR() ?> <br />
-    <input type="text" name="villeR" placeholder="Mettre à jour la ville du restaurant " /><br />
-    <input type="submit" value="Enregistrer" /> <br>
+    Code Postal : <br />
+    <?php echo '<input type="text" name="cpR" value="' . $resto->getCpR() . '"/>'?><br>
 
-    Latitude <?= $resto->getLatitudeDegR() ?> <br />
-    <input type="text" name="latitudeDegR" placeholder="Latitude " /><br />
-    <input type="submit" value="Enregistrer" /> <br>
+    Ville : <br />
+    <?php echo '<input type="text" name="villeR" value="' . $resto->getVilleR() . '"/>'?><br>
+<br />
 
-    Longitude : <?= $resto->getLongitudeDegR() ?> <br />
-    <input type="text" name="longitudeDegR" placeholder="Nouvelle Longitude " /><br />
-    <input type="submit" value="Enregistrer" /> <br>
+    Latitude : <br>
+    <?php echo '<input type="text" name="latitudeDegR" value="' . $resto->getLatitudeDegR() . '"/>'?><br>
 
-    Description : <?= $resto->getDescR() ?> <br />
-    <input type="text" name="descR" placeholder="Nouvelle description " /><br />
-    <input type="submit" value="Enregistrer" /> <br>  
+    Longitude : <br>
+    <?php echo '<input type="text" name="longitude" value="' . $resto->getLongitudeDegR() . '"/>'?><br>
 
-    Horaires :
-    <?=$resto->getHorairesR() ?>
-    <input id="horaire" type="textarea" name="HorairesR" value=<?=$resto->getHorairesR() ?> /><br />
+
+    Description : <br>
+    <?php echo '<input type="text" name="descR" value="' . $resto->getDescR() . '"/>'?> <br>
+
+    Horaires : <br>
+    <?php echo ' <textarea name="horairesR" rows="30" cols="50" value="test">
+            '.$resto->getHorairesR().'
+        </textarea>'?> <br>
     <input type="submit" value="Enregistrer" /> <br>  
 </form>
 
