@@ -352,4 +352,28 @@ class RestoDAO {
         }
         return $ok;
     }
+    public static function insert(string $nomR, int $NumAdrR, string $voieAdrR, string $cpR, string $villeR, int $latitudeDegR, int $longitude, string $descR, string $horairesR ): bool {
+        $ok = false;
+        try {
+        $requete = "INSERT INTO resto(nomR,numAdrR,voieAdrR,cpR,villeR,latitudeDegR,longitudeDegR,descR,horairesR) VALUES (?,?,?,?,?,?,?,?,?)";
+        $stmt = Bdd::getConnexion()->prepare($requete);
+
+                //Affectation de toutes les valeures
+                $stmt->bindParam('1', $nomR);
+                $stmt->bindParam('2', $NumAdrR);
+                $stmt->bindParam('3', $voieAdrR);
+                $stmt->bindParam('4', $cpR);
+                $stmt->bindParam('5', $villeR);
+                $stmt->bindParam('6', $latitudeDegR);
+                $stmt->bindParam('7', $longitude);
+                $stmt->bindParam('8', $descR);
+                $stmt->bindParam('9', $horairesR);
+
+        
+        $ok = $stmt->execute();
+        } catch (PDOException $e) {
+            throw new Exception("Erreur dans la méthode " . get_called_class() . "::update : <br/>" . $e->getMessage());
+        }
+        return $ok;
+    }
 }

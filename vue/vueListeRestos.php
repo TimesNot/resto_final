@@ -21,7 +21,8 @@
 /** @var util $util */
 
 ?>
-<h1>Liste des restaurants</h1>
+<h1>Liste des restaurants <button class="ajout_resto"><a href="./?action=formulaireAjoutResto">AJOUTER</button></h1>
+
 
 <?php
 foreach ($listeRestos as $unResto) {

@@ -28,6 +28,8 @@ function controleurPrincipal(string $action) : string {
     $lesActions["gestCuisine"] = "gestCuisine.php";
     $lesActions["supprimerTypeCuisine"] = "supprimerTypeCuisine.php";
     $lesActions["supprimerUtilisateur"] = "supprimerUtilisateur.php";
+    $lesActions["updResto"] = "updResto.php";
+    $lesActions["formulaireAjoutResto"] = "formulaireAjoutResto.php";
 
 
     

@@ -32,9 +32,11 @@ if (!isset($_POST["mailU"]) || !isset($_POST["mdpU"])){
     // Sinon, on récupèrère les données POST du formulaire d'authentification
     $mailU=$_POST["mailU"];
     $mdpU=$_POST["mdpU"];
+
     
     // on tente l'authentification
     login($mailU,$mdpU);
+    echo login($mailU,$mdpU);
 
     // Si l'utilisateur est connecté (authentification réussie)
     if (!isLoggedOn()){ 
